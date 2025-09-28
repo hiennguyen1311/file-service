@@ -9,11 +9,11 @@ services:
     container_name: file-service
     environment:
       - PORT=4003
+      - NODE_ENV=production
     ports:
       - '4003:4003'
     volumes:
       - ./src:/app/src
       - /var/www/web/storage:/var/www/web/storage
-    environment:
-      - NODE_ENV=production
+      
   
