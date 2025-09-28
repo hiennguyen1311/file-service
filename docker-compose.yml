@@ -14,6 +14,8 @@ services:
     volumes:
       - ./src:/app/src
       - /var/www/web/storage:/var/www/web/storage
+    environment:
+      - NODE_ENV=production
   # redis_chatbot:
   #   container_name: redis_chatbot
   #   image: 'redis:latest'

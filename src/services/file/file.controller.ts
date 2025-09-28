@@ -1,6 +1,6 @@
 import {
+  Controller,
   Inject,
-  Injectable,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -8,8 +8,10 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { FILE_SERVICE } from './tokens';
 import { FileService } from './file.service';
+import { ApiTags } from '@nestjs/swagger';
 
-@Injectable()
+@ApiTags('Files')
+@Controller('files')
 export class FileController {
   constructor(
     @Inject(FILE_SERVICE)

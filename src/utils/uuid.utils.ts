@@ -1,5 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
-
-export function uuid() {
+export async function uuid() {
+  const { v4: uuidv4 } = await import('uuid');
   return uuidv4();
 }
