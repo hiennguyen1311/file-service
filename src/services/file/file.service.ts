@@ -10,9 +10,9 @@ export class FileService {
   ) {}
 
   upload(file: Express.Multer.File) {
-    return {
-      file,
-    };
+    return Object.assign(file, {
+      url: `${this.config.storage.url}/${this.config.storage.folder}/${file.filename}`,
+    });
   }
 
   async delete(filename: string) {
