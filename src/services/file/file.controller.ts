@@ -1,7 +1,9 @@
 import {
+  Body,
   Controller,
   Delete,
   Inject,
+  Logger,
   Param,
   Post,
   UploadedFile,
@@ -22,7 +24,8 @@ export class FileController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  upload(@UploadedFile() file: Express.Multer.File) {
+  upload(@UploadedFile() file: Express.Multer.File, @Body() body) {
+    Logger.log(body, 'body');
     return this.service.upload(file);
   }
 
