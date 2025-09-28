@@ -24,8 +24,7 @@ export class FileController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  upload(@UploadedFile() file: Express.Multer.File, @Body() body) {
-    Logger.log(body, 'body');
+  upload(@UploadedFile() file: Express.Multer.File) {
     Logger.log(file, 'file');
     return this.service.upload(file);
   }
