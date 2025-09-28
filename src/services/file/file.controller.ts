@@ -1,6 +1,8 @@
 import {
   Controller,
+  Delete,
   Inject,
+  Param,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -22,5 +24,10 @@ export class FileController {
   @UseInterceptors(FileInterceptor('file'))
   upload(@UploadedFile() file: Express.Multer.File) {
     return this.service.upload(file);
+  }
+
+  @Delete(':filename')
+  delete(@Param() params: { filename: string }) {
+    return this.service.delete(params.filename);
   }
 }
