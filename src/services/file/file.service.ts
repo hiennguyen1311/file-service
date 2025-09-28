@@ -1,6 +1,7 @@
 import { APP_CONFIG_PROVIDER, AppConfig } from '@/modules';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { unlink } from 'fs';
+import { FileSaveErrorException } from './exceptions';
 
 @Injectable()
 export class FileService {
@@ -10,9 +11,13 @@ export class FileService {
   ) {}
 
   upload(file: Express.Multer.File) {
-    return Object.assign(file, {
-      url: `${this.config.storage.url}/${this.config.storage.folder}/${file.filename}`,
-    });
+    if (file) {
+      return Object.assign(file, {
+        url: `${this.config.storage.url}/${this.config.storage.folder}/${file.filename}`,
+      });
+    }
+
+    throw new FileSaveErrorException();
   }
 
   async delete(filename: string) {
