@@ -15,6 +15,7 @@ import { FileFilterException } from './exceptions';
         storage: diskStorage({
           destination: config.storage.destination,
           filename: (req, file, cb) => {
+            Logger.log(file, 'File');
             const exts = file.originalname.split('.');
             const ext = exts[exts.length - 1];
             const id = uuid();
