@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+  app:
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: file-service
+    environment:
+      - PORT=4001
+    ports:
+      - '4001:4001'
+    volumes:
+      - ./src:/app/src
+      - /var/www/web/storage:/var/www/web/storage
+  # redis_chatbot:
+  #   container_name: redis_chatbot
+  #   image: 'redis:latest'
+  #   ports:
+  #     - '6379:6379'
+  
