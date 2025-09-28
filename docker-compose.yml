@@ -8,10 +8,10 @@ services:
       dockerfile: Dockerfile
     container_name: file-service
     environment:
-      - PORT=4003
+      - PORT=4002
       - NODE_ENV=production
     ports:
-      - '4003:4003'
+      - '4002:4002'
     volumes:
       - ./src:/app/src
       - /var/www/web/storage:/var/www/web/storage
